@@ -1,15 +1,16 @@
 using System.Threading.Tasks;
+using FuncSharp;
 
 namespace F1Api.Handlers;
 
 public interface IDriversHandler
 {
-    Task<Driver> GetDriver();
+    Task<IOption<Driver>> GetDriver(string surname);
 }
 
 public class DriversHandler : IDriversHandler
 {
-    public async Task<Driver> GetDriver()
+    public async Task<IOption<Driver>> GetDriver(string surname)
     {
         var d = new Driver
         {
@@ -19,6 +20,12 @@ public class DriversHandler : IDriversHandler
             FirstF1Season = 2011,
             Nationality = "Australian"
         };
-        return await Task.FromResult(d);
+        
+        if (d.LastName != surname)
+        {
+            return Option.Empty<Driver>();
+        }
+        
+        return await Task.FromResult(Option.Create(d));
     } 
 }

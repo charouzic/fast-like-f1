@@ -1,4 +1,5 @@
 using F1Api.Handlers;
+using FuncSharp;
 using Microsoft.AspNetCore.Mvc;
 
 namespace F1Api.Controllers;
@@ -12,16 +13,28 @@ public class DriversController : ControllerBase
 
     public DriversController(ILogger<DriversController> logger, IDriversHandler driversHandler)
     {
-        // rewrite both in functional way (instead of throwing exception I want it to be Option)
+        // TODO: rewrite both in functional way (instead of throwing exception I want it to be Option)
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));  
         _driversHandler = driversHandler ?? throw new ArgumentNullException(nameof(driversHandler));  
     }
     
     [HttpGet]
-    public async Task<ActionResult<Driver>> GetDriver()
+    [ProducesResponseType(typeof(Driver), 200)]
+    [ProducesResponseType(404)]
+    [Route("{surname}")]
+    public async Task<ActionResult<Driver>> GetDriver([FromRoute] string surname)
     {
-        var response = await _driversHandler.GetDriver();
-        return Ok(response);
+        var response = await _driversHandler.GetDriver(surname);
+
+        response.Match(
+            driver => Ok(driver));
+
+        if (response.IsEmpty)
+        {
+            return NotFound();
+        }
+        
+        return response.GetOrDefault();
     }
     
     [HttpGet]
