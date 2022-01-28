@@ -1,3 +1,4 @@
+using F1Api.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace F1Api.Controllers;
@@ -7,23 +8,20 @@ namespace F1Api.Controllers;
 public class DriversController : ControllerBase
 {
     private readonly ILogger<DriversController> _logger;
+    private readonly IDriversHandler _driversHandler;
 
-    public DriversController(ILogger<DriversController> logger)
+    public DriversController(ILogger<DriversController> logger, IDriversHandler driversHandler)
     {
-        _logger = logger;
+        // rewrite both in functional way
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));  
+        _driversHandler = driversHandler ?? throw new ArgumentNullException(nameof(driversHandler));  
     }
     
     [HttpGet]
-    public Driver GetDriver()
+    public ActionResult<Driver> GetDriver()
     {
-        return new Driver
-        {
-            FirstName = "Daniel",
-            LastName = "Ricardo",
-            DateOfBirth = DateTime.Parse("1.6.1989"),
-            FirstF1Season = 2011,
-            Nationality = "Australian"
-        };
+        var response = _driversHandler.GetDriver();
+        return Ok(response);
     }
     
     [HttpGet]
