@@ -12,21 +12,21 @@ public class DriversController : ControllerBase
 
     public DriversController(ILogger<DriversController> logger, IDriversHandler driversHandler)
     {
-        // rewrite both in functional way
+        // rewrite both in functional way (instead of throwing exception I want it to be Option)
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));  
         _driversHandler = driversHandler ?? throw new ArgumentNullException(nameof(driversHandler));  
     }
     
     [HttpGet]
-    public ActionResult<Driver> GetDriver()
+    public async Task<ActionResult<Driver>> GetDriver()
     {
-        var response = _driversHandler.GetDriver();
+        var response = await _driversHandler.GetDriver();
         return Ok(response);
     }
     
     [HttpGet]
     [Route("allDrivers")]
-    public IEnumerable<Driver> GetDrivers()
+    public ActionResult<IEnumerable<Driver>> GetDrivers()
     {
         var d1 = new Driver
         {
@@ -46,8 +46,8 @@ public class DriversController : ControllerBase
             Nationality = "Belgian-Dutch"
         };
         
-        var res = new List<Driver>() {d1, d2};
-        return res.ToArray();
+        var res = new List<Driver>() {d1, d2}.ToArray();
+        return Ok(res);
     }
     
 }

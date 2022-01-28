@@ -4,14 +4,14 @@ namespace F1Api.Handlers;
 
 public interface IDriversHandler
 {
-    Driver GetDriver();
+    Task<Driver> GetDriver();
 }
 
 public class DriversHandler : IDriversHandler
 {
-    public Driver GetDriver()
+    public async Task<Driver> GetDriver()
     {
-        return new Driver
+        var d = new Driver
         {
             FirstName = "Daniel",
             LastName = "Ricardo",
@@ -19,5 +19,6 @@ public class DriversHandler : IDriversHandler
             FirstF1Season = 2011,
             Nationality = "Australian"
         };
+        return await Task.FromResult(d);
     } 
 }
