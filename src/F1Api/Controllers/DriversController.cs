@@ -39,28 +39,11 @@ public class DriversController : ControllerBase
     
     [HttpGet]
     [Route("allDrivers")]
-    public ActionResult<IEnumerable<Driver>> GetDrivers()
+    public async Task<ActionResult<IEnumerable<Driver>>> GetDrivers()
     {
-        var d1 = new Driver
-        {
-            FirstName = "Daniel",
-            LastName = "Ricardo",
-            DateOfBirth = DateTime.Parse("1.6.1989"),
-            FirstF1Season = 2011,
-            Nationality = "Australian"
-        };
-
-        var d2 = new Driver
-        {
-            FirstName = "Max",
-            LastName = "Verstappen",
-            DateOfBirth = DateTime.Parse("9.30.1997"),
-            FirstF1Season = 2015,
-            Nationality = "Belgian-Dutch"
-        };
+        var res = await _driversHandler.GetDrivers();
         
-        var res = new List<Driver>() {d1, d2}.ToArray();
-        return Ok(res);
+        return Ok(res.GetOrDefault());
     }
     
 }
