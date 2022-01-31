@@ -12,6 +12,4 @@ public class Driver
     public DateTime DateOfBirth { get; set; }
     
     public int FirstF1Season { get; set; }
-
-    //public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
