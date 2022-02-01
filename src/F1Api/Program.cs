@@ -13,7 +13,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IDriversHandler, DriversHandler>();
 builder.Services.AddScoped<IDriverRepository, DriverRepository>();
-builder.Services.AddScoped<INpgsqlConnectionFactory, NpgsqlConnectionFactory>();
 
 var app = builder.Build();
 
