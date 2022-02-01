@@ -12,9 +12,9 @@ public interface IDriversHandler
 
 public class DriversHandler : IDriversHandler
 {
-    private readonly IRepository _repository;
+    private readonly IDriverRepository _repository;
 
-    public DriversHandler(IRepository repository)
+    public DriversHandler(IDriverRepository repository)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }

@@ -1,4 +1,7 @@
+using F1Api.Domain;
+using F1Api.Domain.Contract;
 using F1Api.Handlers;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IDriversHandler, DriversHandler>();
+builder.Services.AddScoped<IDriverRepository, DriverRepository>();
+builder.Services.AddScoped<INpgsqlConnectionFactory, NpgsqlConnectionFactory>();
 
 var app = builder.Build();
 
