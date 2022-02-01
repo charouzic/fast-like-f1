@@ -15,7 +15,7 @@ public class DriversController : ControllerBase
     {
         // TODO: rewrite both in functional way (instead of throwing exception I want it to be Option)
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));  
-        _driversHandler = driversHandler ?? throw new ArgumentNullException(nameof(driversHandler));  
+        _driversHandler = driversHandler ?? throw new ArgumentNullException(nameof(driversHandler));
     }
     
     [HttpGet]
@@ -45,5 +45,4 @@ public class DriversController : ControllerBase
         
         return Ok(res.GetOrDefault());
     }
-    
 }

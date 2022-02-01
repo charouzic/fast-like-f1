@@ -1,7 +1,9 @@
+using System.Configuration;
+using F1Api;
 using F1Api.Domain;
 using F1Api.Domain.Contract;
 using F1Api.Handlers;
-using Npgsql;
+using ConfigurationSection = System.Configuration.ConfigurationSection;
 
 var builder = WebApplication.CreateBuilder(args);
 
