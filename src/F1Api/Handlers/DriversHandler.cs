@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using F1Api.Domain.Contract;
 using FuncSharp;
 
 namespace F1Api.Handlers;
@@ -11,6 +12,13 @@ public interface IDriversHandler
 
 public class DriversHandler : IDriversHandler
 {
+    private readonly IRepository _repository;
+
+    public DriversHandler(IRepository repository)
+    {
+        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+    }
+    
     public async Task<IOption<Driver>> GetDriver(string surname)
     {
         var d = new Driver
