@@ -9,12 +9,13 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script0001 - Create tables.sql" />
+    <EmbeddedResource Include="Scripts\Script0002 - Fill data.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="dbup-core" Version="4.5.0" />
     <PackageReference Include="dbup-postgresql" Version="4.5.0" />
-    <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.1-dev-00944" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.2-dev-00890" />
+    <PackageReference Include="Npgsql" Version="6.0.3" />
   </ItemGroup>
 
 </Project>

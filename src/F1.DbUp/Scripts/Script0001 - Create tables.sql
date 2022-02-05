@@ -1,6 +1,4 @@
-CREATE SCHEMA READ;
-
-CREATE TABLE read.drivers
+CREATE TABLE Drivers
 (
     id integer,
     firstName CHARACTER VARYING(50),
