@@ -11,8 +11,7 @@ namespace F1.DbUp
         {
             var connectionString =
                 args.FirstOrDefault()
-                //?? "Host=localhost;User Id=postgres;Password=Secret!Passw0rd;Database=crazy_database;Port=5432";
-                ?? "Host=localhost;Username=api;password=api;database=f1api;Port=5432";
+                ?? "Host=localhost;Username=api;Password=api;Database=f1api;Port=5432";
             EnsureDatabase.For.PostgresqlDatabase(connectionString);
             var upgrader = DeployChanges.To
                 .PostgresqlDatabase(connectionString)

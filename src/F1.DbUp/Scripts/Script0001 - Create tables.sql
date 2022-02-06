@@ -4,7 +4,7 @@ CREATE TABLE Drivers
     firstName CHARACTER VARYING(50),
     lastName CHARACTER VARYING(50),
     country CHARACTER VARYING(50),
-    dateOfBirth timestamp,
+    dateOfBirth date,
     placeOfBirth CHARACTER VARYING(50),
     team CHARACTER VARYING(50),
     numberOfPodiums integer,
