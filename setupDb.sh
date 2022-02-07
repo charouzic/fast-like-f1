@@ -8,10 +8,10 @@ dotnet run
 
 # need to run the command inside the docker
 # Run psql
-docker exec -it fast-like-f1-f1.postgres-database-1 psql -U api -d f1api
+#docker exec -it fast-like-f1-f1.postgres-database-1 psql -U api -d f1api
 
 # import CSV
-\copy anime FROM '/Users/viki/Desktop/projects_programming/fast-like-f1/src/data/drivers.csv' DELIMITER ',' CSV HEADER;
+#\copy Drivers FROM '/Users/viki/Desktop/projects_programming/fast-like-f1/src/data/drivers.csv' DELIMITER ',' CSV HEADER;
 #psql -c "Drivers(id, firstName, lastName, country, dateOfBirth, placeOfBirth, team, numberOfPodiums, firstSeason, note) from '/Users/viki/Desktop/projects_programming/fast-like-f1/src/data/drivers.csv' DELIMITER ',' CSV HEADER"
 
 echo "Finished"
