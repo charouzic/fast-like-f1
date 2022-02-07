@@ -14,7 +14,7 @@ public class DriversController : ControllerBase
     public DriversController(ILogger<DriversController> logger, IDriversHandler driversHandler)
     {
         // TODO: rewrite both in functional way (instead of throwing exception I want it to be Option)
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));  
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _driversHandler = driversHandler ?? throw new ArgumentNullException(nameof(driversHandler));
     }
     
