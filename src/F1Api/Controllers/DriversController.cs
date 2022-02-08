@@ -27,19 +27,21 @@ public class DriversController : ControllerBase
         var response = await _driversHandler.GetDriver(surname);
 
         response.Match(
-            driver => Ok(driver));
-
+            driver => Ok(driver),
+            _ => NotFound()
+        );
+        
         if (response.IsEmpty)
         {
             return NotFound();
         }
-        
+       
         return response.GetOrDefault();
     }
     
     [HttpGet]
     [Route("allDrivers")]
-    public async Task<ActionResult<IEnumerable<Driver>>> GetDrivers()
+    public async Task<ActionResult<List<Driver>>> GetDrivers()
     {
         var res = await _driversHandler.GetDrivers();
         

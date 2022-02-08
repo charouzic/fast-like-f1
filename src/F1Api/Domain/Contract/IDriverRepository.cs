@@ -6,6 +6,6 @@ public interface IDriverRepository
 {
     Task SaveDriverAsync<T>(T item);
     Task<IOption<Driver>> GetDriverAsync(string surname);
-    Task<IEnumerable<T>> GetAllDriversAsync<T>();
+    Task<IOption<List<Driver>>> GetAllDriversAsync();
     Task DeleteDriverAsync<T>(T item);
 }

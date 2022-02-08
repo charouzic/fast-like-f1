@@ -26,25 +26,6 @@ public class DriversHandler : IDriversHandler
 
     public async Task<IOption<List<Driver>>> GetDrivers()
     {
-        var d1 = new Driver
-        {
-            FirstName = "Daniel",
-            LastName = "Ricardo",
-            //DateOfBirth = DateOnly.Parse("1.6.1989"),
-            FirstSeason = 2011,
-            Country = "Australian"
-        };
-        
-        var d2 = new Driver
-        {
-            FirstName = "Max",
-            LastName = "Verstappen",
-            //DateOfBirth = DateOnly.Parse("9.30.1997"),
-            FirstSeason = 2015,
-            Country = "Belgian-Dutch"
-        };
-
-        var res = new List<Driver>() {d1, d2};
-        return await Task.FromResult(Option.Create(res));
+        return await _repository.GetAllDriversAsync();
     }
 }

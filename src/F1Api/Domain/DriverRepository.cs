@@ -30,11 +30,19 @@ public class DriverRepository: IDriverRepository
     }
     
     // TODO: add async keyword
-    public Task<IEnumerable<T>> GetAllDriversAsync<T>()
+    public async Task<IOption<List<Driver>>> GetAllDriversAsync()
     {
-        throw new NotImplementedException();
+        using (var conn = new NpgsqlConnection(_configuration.GetValue<string>($"MySettings:DbConnection")))
+        {
+            // TODO: replace the * with the fields that are actually present in the db so I'm not retrieving too many items
+            var plainDriver = await conn.QueryAsync<Driver>(
+                //removed dateofbirth column because of parsing
+                $"SELECT id, firstname, lastname, country, placeofbirth, team, numberofpodiums, firstseason, note FROM public.drivers");
+
+            return Option.Create(plainDriver.ToList());
+        }
     }
-    
+
     // TODO: add async keyword
     public Task SaveDriverAsync<T>(T item)
     {
