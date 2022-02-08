@@ -18,7 +18,7 @@ public class DriverRepository: IDriverRepository
     public async Task<IOption<Driver>> GetDriverAsync(string surname)
     {
         // TODO: set it up so it retrieves the dbConnectionString more cleanly
-        using (var conn = new NpgsqlConnection(_configuration.GetValue<string>($"MySettings:DbConnection")))
+        using (var conn = new NpgsqlConnection(Settings.Get("DbConnection", _configuration)))
         {
             // TODO: replace the * with the fields that are actually present in the db so I'm not retrieving too many items
             var plainDriver = await conn.QueryAsync<Driver>(
@@ -32,7 +32,7 @@ public class DriverRepository: IDriverRepository
     // TODO: add async keyword
     public async Task<IOption<List<Driver>>> GetAllDriversAsync()
     {
-        using (var conn = new NpgsqlConnection(_configuration.GetValue<string>($"MySettings:DbConnection")))
+        using (var conn = new NpgsqlConnection(Settings.Get("DbConnection", _configuration)))
         {
             // TODO: replace the * with the fields that are actually present in the db so I'm not retrieving too many items
             var plainDriver = await conn.QueryAsync<Driver>(
