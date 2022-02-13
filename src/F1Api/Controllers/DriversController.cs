@@ -40,11 +40,25 @@ public class DriversController : ControllerBase
     }
     
     [HttpGet]
-    [Route("allDrivers")]
+    [Route("all")]
     public async Task<ActionResult<List<Driver>>> GetDrivers()
     {
         var res = await _driversHandler.GetDrivers();
         
         return Ok(res.GetOrDefault());
+    }
+    
+    [HttpPut]
+    [Route("upsert")]
+    public Task<ActionResult<List<Driver>>> UpsertDriver()
+    {
+        throw new NotImplementedException();
+    }
+    
+    [HttpDelete]
+    [Route("delete")]
+    public Task<ActionResult<List<Driver>>> DeleteDriver()
+    {
+        throw new NotImplementedException();
     }
 }
