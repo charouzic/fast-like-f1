@@ -34,7 +34,6 @@ public class DriverRepository: IDriverRepository
     {
         using (var conn = new NpgsqlConnection(Settings.Get("DbConnection", _configuration)))
         {
-            // TODO: replace the * with the fields that are actually present in the db so I'm not retrieving too many items
             var plainDriver = await conn.QueryAsync<Driver>(
                 //removed dateofbirth column because of parsing
                 $"SELECT id, firstname, lastname, country, placeofbirth, team, numberofpodiums, firstseason, note FROM public.drivers");
@@ -50,8 +49,16 @@ public class DriverRepository: IDriverRepository
     }
 
     // TODO: add async keyword
-    public Task DeleteDriverAsync<T>(T item)
+    public async Task<bool> DeleteDriverAsync(string lastName)
     {
-        throw new NotImplementedException();
+        using (var conn = new NpgsqlConnection(Settings.Get("DbConnection", _configuration)))
+        {
+            var deletedDriver = await conn.ExecuteAsync(
+                $"DELETE FROM public.drivers WHERE lastname = '{lastName}'");
+            
+            return deletedDriver.Match(
+                0, _ => false,
+                _ => true);
+        }
     }
 }

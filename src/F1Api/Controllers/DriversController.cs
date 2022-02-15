@@ -56,9 +56,17 @@ public class DriversController : ControllerBase
     }
     
     [HttpDelete]
-    [Route("delete")]
-    public Task<ActionResult<List<Driver>>> DeleteDriver()
+    [Route("delete/{lastName}")]
+    public async Task<ActionResult> DeleteDriver([FromRoute] string lastName)
     {
-        throw new NotImplementedException();
+        var response = await _driversHandler.DeleteDriver(lastName);
+
+        // I'd love to use pattern matching here but I can't seem to find a way how to match on boolean
+        if (response)
+        {
+            return Ok();
+        }
+
+        return NotFound();
     }
 }
