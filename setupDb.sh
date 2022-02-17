@@ -16,3 +16,9 @@ dotnet run
 
 echo "Finished"
 echo "DB connection: 'Host=localhost;Username=api;password=api;database=f1api;Port=5432'"
+
+cd ..
+
+cd F1Api
+echo "Running the project"
+dotnet run
