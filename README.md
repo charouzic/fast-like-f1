@@ -1,7 +1,7 @@
 # Formula 1 API
 
 ## Motivation behind
-This project is made from pure joy and enthusiasm about Formula 1 after watching the Drive to Survive Netflix serie. 
+This project is made from pure joy and enthusiasm about Formula 1 after watching the Drive to Survive Netflix series. 
 It is dedicated to serve data about drivers, teams and many more in a conscise way so one does not need to spend hours
 going through wikipedia and finding facts about Formula 1. Everything is in one place and easy for use.
 
