@@ -9,7 +9,7 @@ The project also represents a playground for trying out the [FuncSharp](https://
 [Mews](mews.com) (Czech company within hospitality). It is adopting functional way of writing code, using immutable data structures, pattern matching
 and many more cool stuf that functional langugues like Scala posses.
 
-## Prerequisities for running the project
+## Prerequisities for Running the Project
 The machine you will run this project on needs to have installed [docker](https://www.docker.com/get-started) and [dotnet](https://dotnet.microsoft.com/en-us/download).
 
 ## Running the Project
