@@ -16,12 +16,12 @@ The machine you will run this project on needs to have installed [docker](https:
 
 After that you can navigate to the root directory of the project and run command to run shell script setting up database (make sure that the docker is running):
 ```
-./setupDb.sh
+./run.sh
 ```
 
 Note that you might need to grant permissions the shell script. You can do that by running the following command:
 ```
-chmod +x ./setupDb.sh
+chmod +x ./run.sh
 ```
 
 Ater that you should be able to see the swagger API representation at both urls:
