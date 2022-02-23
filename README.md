@@ -29,3 +29,10 @@ Ater that you should be able to see the swagger API representation at both urls:
 - http://localhost:5036/swagger
 
 Or by just calling the given endpoints from postman for example.
+
+## Technologies
+- .NET 6
+- PostgreSQL
+- Docker
+- Swagger
+- FuncSharp
