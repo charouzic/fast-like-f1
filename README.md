@@ -36,3 +36,9 @@ Or by just calling the given endpoints from postman for example.
 - Docker
 - Swagger
 - FuncSharp
+
+
+## TODO
+- make the Update endpoint functional
+- add tests
+- create CICD pipeline in github
