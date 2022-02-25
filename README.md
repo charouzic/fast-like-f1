@@ -39,6 +39,10 @@ Or by just calling the given endpoints from postman for example.
 
 
 ## TODO
-- make the Update endpoint functional
-- add tests
-- create CICD pipeline in github
+- [x] make the Delete Driver endpoint
+- [x] make the GetDrivers endpoint
+- [x] make the GetDriver endpoint
+- [x] make the Delete Driver endpoint
+- [ ] make the Update Driver endpoint
+- [ ] add tests
+- [ ] create CICD pipeline in github
