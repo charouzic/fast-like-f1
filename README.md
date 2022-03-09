@@ -45,4 +45,4 @@ Or by just calling the given endpoints from postman for example.
 - [x] make the Delete Driver endpoint
 - [ ] make the Update Driver endpoint
 - [ ] add tests
-- [ ] create CICD pipeline in github
+- [ ] create CICD pipeline on github
